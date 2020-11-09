@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_putnmbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/09 16:35:57 by eboris           ###   ########.fr       */
+/*   Created: 2019/09/20 16:46:55 by geliz             #+#    #+#             */
+/*   Updated: 2019/09/20 18:37:53 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include <mlx.h>
-# include "libft.h"
-
-# define SIZE_X 1500
-# define SIZE_Y 1000
-
-#endif
+void	ft_putnbr(int n)
+{
+	if (n == -2147483648)
+		ft_putstr("-2147483648");
+	else
+	{
+		if (n < 0)
+		{
+			n = n * -1;
+			ft_putchar('-');
+		}
+		if (n > 9)
+			ft_putnbr(n / 10);
+		ft_putchar(n % 10 + '0');
+	}
+}

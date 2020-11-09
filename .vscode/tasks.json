@@ -6,7 +6,10 @@
             "command": "/usr/bin/gcc",
             "args": [
                 "-g",
+                "~/work/fdf/libft/sources/*.c",
                 "~/work/fdf/srcs/*.c",
+                "-I",
+                "~/work/fdf/libft/includes",
                 "-I",
                 "~/work/fdf/includes/",
                 "-lmlx",
@@ -15,6 +18,9 @@
                 "-framework",
                 "AppKit",
                 "-lm",
+                // "-Wall",
+                // "-Wextra",
+                // "-Werror",
                 "-o",
                 "~/work/fdf/fdf"
             ],

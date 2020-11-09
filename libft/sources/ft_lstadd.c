@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/09 16:35:57 by eboris           ###   ########.fr       */
+/*   Created: 2019/09/21 12:39:25 by geliz             #+#    #+#             */
+/*   Updated: 2019/09/21 12:45:20 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include <mlx.h>
-# include "libft.h"
-
-# define SIZE_X 1500
-# define SIZE_Y 1000
-
-#endif
+void	ft_lstadd(t_list **alst, t_list *new)
+{
+	new->next = *alst;
+	*alst = new;
+}

@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/09 16:35:57 by eboris           ###   ########.fr       */
+/*   Created: 2019/09/14 13:28:59 by geliz             #+#    #+#             */
+/*   Updated: 2019/09/27 14:23:54 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include <mlx.h>
-# include "libft.h"
-
-# define SIZE_X 1500
-# define SIZE_Y 1000
-
-#endif
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	if (dst > src)
+	{
+		while (len--)
+			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
+	}
+	if (dst < src)
+		ft_memcpy(dst, src, len);
+	return (dst);
+}

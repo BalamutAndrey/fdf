@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/09 16:35:57 by eboris           ###   ########.fr       */
+/*   Created: 2019/09/14 18:19:06 by geliz             #+#    #+#             */
+/*   Updated: 2019/09/14 19:08:11 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include <mlx.h>
-# include "libft.h"
-
-# define SIZE_X 1500
-# define SIZE_Y 1000
-
-#endif
+int		ft_isalnum(int c)
+{
+	if (((c >= '0') && (c <= '9')) || ((c >= 'a') && (c <= 'z')) ||
+			((c >= 'A') && (c <= 'Z')))
+		return (1);
+	else
+		return (0);
+}
