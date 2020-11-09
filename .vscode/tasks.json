@@ -1,0 +1,34 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: gcc build active file",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-g",
+                "~/work/fdf/srcs/*.c",
+                "-I",
+                "~/work/fdf/includes/",
+                "-lmlx",
+                "-framework",
+                "OpenGL",
+                "-framework",
+                "AppKit",
+                "-lm",
+                "-o",
+                "~/work/fdf/fdf"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
