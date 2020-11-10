@@ -8,7 +8,11 @@ SRC_DIR=./srcs
 OBJ_DIR=./obj
 LIB_DIR=./libft
 
-SRC_NAME=fdf.c
+SRC_NAME=fdf.c \
+		fdf_error.c \
+		fdf_func.c \
+		fdf_func.c \
+		fdf_struct.c
 
 SRC = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
 
