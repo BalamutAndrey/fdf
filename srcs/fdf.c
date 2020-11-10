@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:19:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/10 14:23:15 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/10 17:41:17 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(void)
 	void	*mlx;
 	void	*win;
 	void	*img;
+
+	ft_printf("%f", fabs(-5.11));
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, SIZE_X, SIZE_Y, "FDF");
