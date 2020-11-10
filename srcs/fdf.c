@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:19:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/09 17:33:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/10 14:23:15 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ int	main(void)
 	win = mlx_new_window(mlx, SIZE_X, SIZE_Y, "FDF");
 	img = mlx_new_image(mlx, SIZE_X, SIZE_Y);
 
+	mlx_pixel_put(mlx, win, 100, 100, 0xffffff);
+
+	mlx_loop(mlx);
 	return (0);
 }
