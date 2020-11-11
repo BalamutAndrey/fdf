@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:11:02 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/10 19:25:01 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/11 13:52:46 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	fdf_error(t_fdf *fdf, char *err)
 {
-	ft_fprintf(STDERR_FILENO, "%s", err);
+	ft_fprintf(STDERR_FILENO, "\033[0;31;1m%s\033[0m", err);
 	fdf_exit(fdf);
 }

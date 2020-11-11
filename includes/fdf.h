@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/10 19:31:29 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/11 16:20:46 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@
 # define SIZE_Y 1000
 # define MAX_X 150
 # define MAX_Y 100
+# define SIZE 50
+
+typedef struct	s_bres
+{
+	float		x1;
+	float		y1;
+	float		x2;
+	float		y2;
+}				t_bres;
 
 typedef struct	s_fdf
 {
@@ -32,7 +41,9 @@ typedef struct	s_fdf
 	void		*img;
 	int			map_x;
 	int			map_y;
-	int			**map;
+	// int			**map;
+	int			map[11][19];
+	t_bres		*bres;
 }				t_fdf;
 
 /*
@@ -57,6 +68,19 @@ void	fdf_error(t_fdf *fdf, char *err);
 ** fdf_readmap.c
 */
 void	fdf_readmap(t_fdf *fdf, char *arg);
-
+/*
+** fdf_init.c
+*/
+void    fdf_init(t_fdf *fdf);
+/*
+** fdf_keyboard.c
+*/
+int		fdf_keyboard(t_fdf *fdf);
+/*
+** fdf_draw.c
+*/
+void	fdf_draw(t_fdf *fdf);
+void	fdf_bresenham(t_fdf *fdf);
+void    temp_map(t_fdf *fdf);
 
 #endif

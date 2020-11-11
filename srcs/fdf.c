@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:19:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/10 19:29:39 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/11 15:12:42 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ int		main(int argc, char **argv)
 
 //	ft_printf("%f", fabs(-5.11));
 	if (argc != 2)
-		fdf_error(NULL, "Usage: ./fdf mapfile\n");
+		fdf_error(NULL, "fdf: Usage: ./fdf mapfile\n");
 	fdf = fdf_create_fdf();
-	fdf_readmap(fdf, argv[1]);
-	fdf->mlx = mlx_init();
-	fdf->win = mlx_new_window(fdf->mlx, SIZE_X, SIZE_Y, "FDF");
-	fdf->img = mlx_new_image(fdf->mlx, SIZE_X, SIZE_Y);
+	// fdf_readmap(fdf, argv[1]);
+	temp_map(fdf);
+	fdf_init(fdf);
 
-	mlx_pixel_put(fdf->mlx, fdf->win, 100, 100, 0xffffff);
+	fdf_draw(fdf);
+
+	//mlx_pixel_put(fdf->mlx, fdf->win, 100, 100, 0xffffff);
 
 	mlx_loop(fdf->mlx);
 	return (0);

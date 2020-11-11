@@ -11,8 +11,11 @@ LIB_DIR=./libft
 SRC_NAME=fdf.c \
 		fdf_error.c \
 		fdf_func.c \
-		fdf_func.c \
-		fdf_struct.c
+		fdf_struct.c \
+		fdf_readmap.c \
+		fdf_init.c \
+		fdf_keyboard.c \
+		fdf_draw.c \
 
 SRC = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
 
