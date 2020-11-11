@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/11 16:20:46 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/11 17:48:06 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@
 # define SIZE_Y 1000
 # define MAX_X 150
 # define MAX_Y 100
-# define SIZE 50
+# define ZOOM 20
+
+# define WHITE 0xffffff
+# define RED 0xe80c0c
 
 typedef struct	s_bres
 {
@@ -32,6 +35,8 @@ typedef struct	s_bres
 	float		y1;
 	float		x2;
 	float		y2;
+	float		z1;
+	float		z2;
 }				t_bres;
 
 typedef struct	s_fdf
@@ -80,6 +85,7 @@ int		fdf_keyboard(t_fdf *fdf);
 ** fdf_draw.c
 */
 void	fdf_draw(t_fdf *fdf);
+void	fdf_draw_1(t_fdf *fdf);
 void	fdf_bresenham(t_fdf *fdf);
 void    temp_map(t_fdf *fdf);
 
