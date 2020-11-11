@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:59:26 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/11 16:12:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/11 16:50:13 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	fdf_bresenham(t_fdf *fdf)
 	x_step = fdf->bres->x2 - fdf->bres->x1;
 	y_step = fdf->bres->y2 - fdf->bres->y1;
 	if (x_step > y_step)
-		max = fdf_fabs(x_step);
+		max = fabs(x_step);
 	else
-		max = fdf_fabs(y_step);
+		max = fabs(y_step);
 	x_step = x_step / max;
 	y_step = y_step / max;
 	while ((int)(fdf->bres->x1 - fdf->bres->x2) ||
@@ -44,15 +44,6 @@ void	fdf_bresenham(t_fdf *fdf)
 		fdf->bres->x1 = fdf->bres->x1 + x_step;
 		fdf->bres->y1 = fdf->bres->y1 + y_step;
 	}
-}
-
-
-float	fdf_fabs(float n)
-{
-	float	fin;
-
-	fin = fabs(n);
-	return (fin);
 }
 
 // Delete me!!!

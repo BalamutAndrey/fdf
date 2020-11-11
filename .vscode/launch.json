@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/~/work/fdf/fdf",
-			"args": [],
+			"args": ["test"],
 			"stopAtEntry": false,
 			"cwd": "/~/work/fdf/",
 			"environment": [],
