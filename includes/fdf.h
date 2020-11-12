@@ -16,7 +16,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include <math.h>
 # include "libft.h"
 
@@ -46,10 +46,16 @@ typedef struct	s_fdf
 	void		*img;
 	int			map_x;
 	int			map_y;
-	// int			**map;
-	int			map[11][19];
+	 int			**map;
+//	int			map[11][19];
 	t_bres		*bres;
 }				t_fdf;
+
+typedef struct		s_str
+{
+	int				*arr;
+	struct s_str	*next;
+}					t_str;
 
 /*
 ** fdf.c
@@ -73,6 +79,17 @@ void	fdf_error(t_fdf *fdf, char *err);
 ** fdf_readmap.c
 */
 void	fdf_readmap(t_fdf *fdf, char *arg);
+void	fdf_readmap_check(t_fdf *fdf, char *str, t_str *first);
+void	fdf_read_clean(char *str, t_str *fir, int fir_fl);
+void	fdf_fillmap(t_fdf *fdf, t_str *first);
+/*
+** 
+*/
+int		fdf_string_to_arr(t_fdf *fdf, t_str *first, char *str);
+void	fdf_fill_str_struct(t_fdf *fdf, t_str *first, char **split, int i);
+void	fdf_fill_arr(t_fdf *fdf, t_str *f, char **split, int len);
+int		fdf_check_is_number(t_fdf *fdf, char *str, char **spl);
+void	fdf_remove_split(char ***split);
 /*
 ** fdf_init.c
 */

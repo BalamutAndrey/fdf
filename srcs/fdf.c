@@ -20,15 +20,16 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 		fdf_error(NULL, "fdf: Usage: ./fdf mapfile\n");
 	fdf = fdf_create_fdf();
-	// fdf_readmap(fdf, argv[1]);
-	temp_map(fdf);
-	fdf_init(fdf);
+	fdf_readmap(fdf, argv[1]);
+	
+//	temp_map(fdf);
+//	fdf_init(fdf);
 
-	fdf_draw(fdf);
+//	fdf_draw(fdf);
 
 	//mlx_pixel_put(fdf->mlx, fdf->win, 100, 100, 0xffffff);
 
-	mlx_loop(fdf->mlx);
+//	mlx_loop(fdf->mlx);
 	return (0);
 }
 

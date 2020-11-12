@@ -13,6 +13,7 @@ SRC_NAME=fdf.c \
 		fdf_func.c \
 		fdf_struct.c \
 		fdf_readmap.c \
+		fdf_map_valid.c \
 		fdf_init.c \
 		fdf_keyboard.c \
 		fdf_draw.c \
