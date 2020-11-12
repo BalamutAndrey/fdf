@@ -12,6 +12,26 @@
 
 #include "fdf.h"
 
+void	tmp_print_map(t_fdf *fdf)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (i < fdf->map_y)
+	{
+		while (j < fdf->map_x)
+		{
+			ft_printf("%2i ", fdf->map[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		j = 0;
+		i++;
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_fdf	*fdf;
@@ -21,7 +41,7 @@ int		main(int argc, char **argv)
 		fdf_error(NULL, "fdf: Usage: ./fdf mapfile\n");
 	fdf = fdf_create_fdf();
 	fdf_readmap(fdf, argv[1]);
-	
+	tmp_print_map(fdf);
 //	temp_map(fdf);
 //	fdf_init(fdf);
 

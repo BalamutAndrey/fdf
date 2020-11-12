@@ -12,27 +12,6 @@
 
 #include "fdf.h"
 
-////////////////////////TMP
-void	tmp_print_map(t_fdf *fdf)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (i < fdf->map_y)
-	{
-		while (j < fdf->map_x)
-		{
-			ft_printf("%2i ", fdf->map[i][j]);
-			j++;
-		}
-		ft_printf("\n");
-		j = 0;
-		i++;
-	}
-}
-
 void	fdf_fillmap(t_fdf *fdf, t_str *first)
 {
 	int		i;
@@ -48,7 +27,6 @@ void	fdf_fillmap(t_fdf *fdf, t_str *first)
 		tmp = tmp->next;
 	}
 	fdf_read_clean(NULL, first, 0);
-	tmp_print_map(fdf);
 }
 
 void	fdf_read_clean(char *str, t_str *fir, int fir_fl)
