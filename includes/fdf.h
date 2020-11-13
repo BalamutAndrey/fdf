@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/13 18:07:55 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/13 21:17:51 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define SIZE_Y 1000
 # define MAX_X 150
 # define MAX_Y 100
-# define ZOOM 35
 
 typedef	struct	s_color
 {
@@ -37,12 +36,12 @@ typedef	struct	s_color
 
 typedef struct	s_bres
 {
-	double		x1;
-	double		y1;
-	double		x2;
-	double		y2;
-	double		z1;
-	double		z2;
+	int			x1;
+	int			y1;
+	int			x2;
+	int			y2;
+	int			z1;
+	int			z2;
 }				t_bres;
 
 typedef struct	s_fdf
@@ -59,6 +58,7 @@ typedef struct	s_fdf
 	int			map_x;
 	int			map_y;
 	int			**map;
+	int			zoom;
 //	int			map[11][19];
 	t_bres		*bres;
 }				t_fdf;

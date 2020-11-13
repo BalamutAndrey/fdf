@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:19:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/12 15:21:05 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/13 21:17:46 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ int		main(int argc, char **argv)
 		fdf_error(NULL, "fdf: Usage: ./fdf mapfile\n");
 	fdf = fdf_create_fdf();
 	fdf_readmap(fdf, argv[1]);
-
+	fdf->zoom = fminf((SIZE_X) / fdf->map_x / 2, SIZE_Y / fdf->map_y / 2);
 //	tmp_print_map(fdf);
 
 //	temp_map(fdf);
+
 	fdf_init(fdf);
 	fdf_draw(fdf);
 	mlx_loop(fdf->mlx);

@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:59:26 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/13 18:18:57 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/13 21:19:01 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void	fdf_draw_1(t_fdf *fdf)
 
 void	fdf_isometria(double *x, double *y, int z)
 {
-	double	t_x;
-	double	t_y;
+	float	t_x;
+	float	t_y;
 
-	t_x = *x;
-	t_y = *y;
+	t_x = (float)*x;
+	t_y = (float)*y;
 
 	*x = (t_x - t_y) * cos(0.523599);
 	*y = (t_x + t_y) * sin(0.523599) - z;
@@ -103,20 +103,20 @@ void	fdf_bresenham(t_fdf *fdf)
 
 	fdf->bres->z1 = fdf->map[(int)fdf->bres->y1][(int)fdf->bres->x1];
 	fdf->bres->z2 = fdf->map[(int)fdf->bres->y2][(int)fdf->bres->x2];
-	fdf->bres->z1 = fdf->bres->z1 * ZOOM;
-	fdf->bres->z2 = fdf->bres->z2 * ZOOM;
+	fdf->bres->z1 = fdf->bres->z1 * fdf->zoom;
+	fdf->bres->z2 = fdf->bres->z2 * fdf->zoom;
 	if (fdf->bres->z1 > 0)
 		color = (t_color){0, 0, 255, 0};
 	else
 		color = (t_color){255, 255, 255, 0};
-	fdf->bres->x1 = fdf->bres->x1 * ZOOM;
-	fdf->bres->y1 = fdf->bres->y1 * ZOOM;
-	fdf->bres->x2 = fdf->bres->x2 * ZOOM;
-	fdf->bres->y2 = fdf->bres->y2 * ZOOM;
-	fdf->bres->x1 = fdf->bres->x1 + ((SIZE_X / 2) - ((fdf->map_x  * ZOOM) / 2));
-	fdf->bres->y1 = fdf->bres->y1 + ((SIZE_Y / 2) - ((fdf->map_y  * ZOOM) / 2));
-	fdf->bres->x2 = fdf->bres->x2 + ((SIZE_X / 2) - ((fdf->map_x  * ZOOM) / 2));
-	fdf->bres->y2 = fdf->bres->y2 + ((SIZE_Y / 2) - ((fdf->map_y  * ZOOM) / 2));
+	fdf->bres->x1 = fdf->bres->x1 * fdf->zoom;
+	fdf->bres->y1 = fdf->bres->y1 * fdf->zoom;
+	fdf->bres->x2 = fdf->bres->x2 * fdf->zoom;
+	fdf->bres->y2 = fdf->bres->y2 * fdf->zoom;
+	fdf->bres->x1 = fdf->bres->x1 + ((SIZE_X / 2) - ((fdf->map_x  * fdf->zoom) / 2));
+	fdf->bres->y1 = fdf->bres->y1 + ((SIZE_Y / 2) - ((fdf->map_y  * fdf->zoom) / 2));
+	fdf->bres->x2 = fdf->bres->x2 + ((SIZE_X / 2) - ((fdf->map_x  * fdf->zoom) / 2));
+	fdf->bres->y2 = fdf->bres->y2 + ((SIZE_Y / 2) - ((fdf->map_y  * fdf->zoom) / 2));
 	x_step = fdf->bres->x2 - fdf->bres->x1;
 	y_step = fdf->bres->y2 - fdf->bres->y1;
 	if (x_step > y_step)
@@ -134,6 +134,36 @@ void	fdf_bresenham(t_fdf *fdf)
 	}
 }
 
+void			rotate_x(int *y, int *z, double alpha)
+{
+	int			previous_y;
+
+	previous_y = *y;
+	*y = previous_y * cos(alpha) + *z * sin(alpha);
+	*z = -previous_y * sin(alpha) + *z * cos(alpha);
+}
+
+void			rotate_y(int *x, int *z, double beta)
+{
+	int			previous_x;
+
+	previous_x = *x;
+	*x = previous_x * cos(beta) + *z * sin(beta);
+	*z = -previous_x * sin(beta) + *z * cos(beta);
+}
+
+void			rotate_z(int *x, int *y, double gamma)
+{
+	int			previous_x;
+	int			previous_y;
+
+	previous_x = *x;
+	previous_y = *y;
+	*x = previous_x * cos(gamma) - previous_y * sin(gamma);
+	*y = previous_x * sin(gamma) + previous_y * cos(gamma);
+}
+
+
 void	fdf_bresenham_iso(t_fdf *fdf)
 {
 	double	x_step;
@@ -143,47 +173,100 @@ void	fdf_bresenham_iso(t_fdf *fdf)
 
 	fdf->bres->z1 = fdf->map[(int)fdf->bres->y1][(int)fdf->bres->x1];
 	fdf->bres->z2 = fdf->map[(int)fdf->bres->y2][(int)fdf->bres->x2];
-	fdf->bres->z1 = fdf->bres->z1 * (ZOOM);
-	fdf->bres->z2 = fdf->bres->z2 * (ZOOM);
-	if ((fdf->bres->z1 > 0) || (fdf->bres->z2 > 0))
+
+	fdf->bres->z1 = fdf->bres->z1 * (fdf->zoom);
+	fdf->bres->z2 = fdf->bres->z2 * (fdf->zoom);
+	if ((fdf->bres->z1 != 0) || (fdf->bres->z2 != 0))
 		color = (t_color){0, 0, 255, 0};
 	else
 		color = (t_color){255, 255, 255, 0};
-	fdf->bres->x1 = fdf->bres->x1 * ZOOM;
-	fdf->bres->y1 = fdf->bres->y1 * ZOOM;
-	fdf->bres->x2 = fdf->bres->x2 * ZOOM;
-	fdf->bres->y2 = fdf->bres->y2 * ZOOM;
-	fdf_isometria(&fdf->bres->x1, &fdf->bres->y1, fdf->bres->z1);
-	fdf_isometria(&fdf->bres->x2, &fdf->bres->y2, fdf->bres->z2);
-	fdf->bres->x1 = fdf->bres->x1 + ((SIZE_X / 2) - ((fdf->map_x  * ZOOM) / 2));
-	fdf->bres->y1 = fdf->bres->y1 + ((SIZE_Y / 2) - ((fdf->map_y  * ZOOM) / 2));
-	fdf->bres->x2 = fdf->bres->x2 + ((SIZE_X / 2) - ((fdf->map_x  * ZOOM) / 2));
-	fdf->bres->y2 = fdf->bres->y2 + ((SIZE_Y / 2) - ((fdf->map_y  * ZOOM) / 2));
-	if ((fdf->bres->x1 < fdf->bres->x2) || (fdf->bres->y1 < fdf->bres->y2))
-	{
-		double t;
-		t = fdf->bres->x1;
-		fdf->bres->x1 = fdf->bres->x2;
-		fdf->bres->x2 = t;
-		t = fdf->bres->y1;
-		fdf->bres->y1 = fdf->bres->y2;
-		fdf->bres->y2 = t;	
-	}
-	x_step = fdf->bres->x2 - fdf->bres->x1;
-	y_step = fdf->bres->y2 - fdf->bres->y1;
-	if (x_step > y_step)
-		max = fabs(x_step);
-	else
-		max = fabs(y_step);
-	x_step = x_step / max;
-	y_step = y_step / max;
-	while ((uint)(fdf->bres->x1 - fdf->bres->x2) ||
-			(uint)(fdf->bres->y1 - fdf->bres->y2))
+
+
+	fdf->bres->x1 = fdf->bres->x1 * fdf->zoom;
+	fdf->bres->y1 = fdf->bres->y1 * fdf->zoom;
+	fdf->bres->x2 = fdf->bres->x2 * fdf->zoom;
+	fdf->bres->y2 = fdf->bres->y2 * fdf->zoom;
+
+
+	fdf->bres->x1 -= ((fdf->map_x - 1) * fdf->zoom) / 2;
+	fdf->bres->y1 -= ((fdf->map_y - 1) * fdf->zoom) / 2;
+	fdf->bres->x2 -= ((fdf->map_x - 1) * fdf->zoom) / 2;
+	fdf->bres->y2 -= ((fdf->map_y - 1) * fdf->zoom) / 2;
+
+	rotate_z(&fdf->bres->x1, &fdf->bres->y1, 0.523599);
+	rotate_x(&fdf->bres->y1, &fdf->bres->z1, -0.723599);
+	// rotate_y(&fdf->bres->x1, &fdf->bres->z1, 0.523599);
+
+	rotate_z(&fdf->bres->x2, &fdf->bres->y2, 0.523599);
+	rotate_x(&fdf->bres->y2, &fdf->bres->z2, -0.723599);
+	// rotate_y(&fdf->bres->x2, &fdf->bres->z2, 0.523599);
+
+
+	// fdf_isometria(&fdf->bres->x1, &fdf->bres->y1, fdf->bres->z1);
+	// fdf_isometria(&fdf->bres->x2, &fdf->bres->y2, fdf->bres->z2);
+
+	fdf->bres->x1 += (SIZE_X) / 2;
+	fdf->bres->y1 += (SIZE_Y + fdf->map_y / fdf->zoom) / 2;
+	fdf->bres->x2 += (SIZE_X) / 2;
+	fdf->bres->y2 += (SIZE_Y + fdf->map_y / fdf->zoom) / 2;
+
+
+	// fdf->bres->x1 = fdf->bres->x1 + ((SIZE_X / 2) - ((fdf->map_x  * fdf->zoom) / 2));
+	// fdf->bres->y1 = fdf->bres->y1 + ((SIZE_Y / 2) - ((fdf->map_y  * fdf->zoom) / 2));
+	// fdf->bres->x2 = fdf->bres->x2 + ((SIZE_X / 2) - ((fdf->map_x  * fdf->zoom) / 2));
+	// fdf->bres->y2 = fdf->bres->y2 + ((SIZE_Y / 2) - ((fdf->map_y  * fdf->zoom) / 2));
+
+	double	delta_x;
+	double	delta_y;
+	double	sign_x;
+	double	sign_y;
+	int		error[2];
+
+	delta_x = abs(fdf->bres->x2 - fdf->bres->x1);
+	delta_y = abs(fdf->bres->y2 - fdf->bres->y1);
+	sign_x = fdf->bres->x1 < fdf->bres->x2 ? 1 : -1;
+	sign_y = fdf->bres->y1 < fdf->bres->y2 ? 1 : -1;
+	error[0] = delta_x - delta_y;
+	double i = fdf->zoom;
+	while ((int)fdf->bres->x1 != (int)fdf->bres->x2 || (int)fdf->bres->y1 != (int)fdf->bres->y2)
 	{
 		fdf_put_pixel_iso(fdf, fdf->bres->x1, fdf->bres->y1, color);
-		fdf->bres->x1 = fdf->bres->x1 + x_step;
-		fdf->bres->y1 = fdf->bres->y1 + y_step;
+		if ((error[1] = error[0] * 2) > -delta_y)
+		{
+			error[0] -= delta_y;
+			fdf->bres->x1 += sign_x;
+		}
+		if (error[1] < delta_x)
+		{
+			error[0] += delta_x;
+			fdf->bres->y1 += sign_y;
+		}
 	}
+	// if ((fdf->bres->x1 < fdf->bres->x2) || (fdf->bres->y1 < fdf->bres->y2))
+	// {
+	// 	double t;
+	// 	t = fdf->bres->x1;
+	// 	fdf->bres->x1 = fdf->bres->x2;
+	// 	fdf->bres->x2 = t;
+	// 	t = fdf->bres->y1;
+	// 	fdf->bres->y1 = fdf->bres->y2;
+	// 	fdf->bres->y2 = t;	
+	// }
+	// x_step = fdf->bres->x2 - fdf->bres->x1;
+	// y_step = fdf->bres->y2 - fdf->bres->y1;
+	// if (x_step > y_step)
+	// 	max = fabs(x_step);
+	// else
+	// 	max = fabs(y_step);
+	// x_step = x_step / max;
+	// y_step = y_step / max;
+	// while ((uint)(fdf->bres->x1 - fdf->bres->x2) ||
+	// 		(uint)(fdf->bres->y1 - fdf->bres->y2))
+	// {
+	// 	fdf_put_pixel_iso(fdf, fdf->bres->x1, fdf->bres->y1, color);
+	// 	fdf->bres->x1 = fdf->bres->x1 + x_step;
+	// 	fdf->bres->y1 = fdf->bres->y1 + y_step;
+	// }
 }
 
 // Delete me!!!
