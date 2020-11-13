@@ -14,9 +14,12 @@ SRC_NAME=fdf.c \
 		fdf_struct.c \
 		fdf_readmap.c \
 		fdf_map_valid.c \
+		gnl.c \
+		gnl_clear.c \
 		fdf_init.c \
 		fdf_keyboard.c \
-		fdf_draw.c \
+		fdf_draw.c
+
 
 SRC = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
 

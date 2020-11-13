@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/13 21:17:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/13 21:30:42 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@
 # define SIZE_Y 1000
 # define MAX_X 150
 # define MAX_Y 100
+
+# define BUFF_SIZE 10000
+# define ERROR -1
+# define SUCCESS 1
+# define END 0
 
 typedef	struct	s_color
 {
@@ -118,5 +123,9 @@ void	fdf_draw_1(t_fdf *fdf);
 void	fdf_bresenham(t_fdf *fdf);
 void	fdf_bresenham_iso(t_fdf *fdf);
 void    temp_map(t_fdf *fdf);
+
+int		get_next_line(const int fd, char **line);
+
+void	ft_lst_del(t_list *first);
 
 #endif

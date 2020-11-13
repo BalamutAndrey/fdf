@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 17:03:37 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/12 15:20:04 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/13 21:30:20 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define LIBFT_H
 # include <string.h>
 # include "ft_printf.h"
-
-# define BUFF_SIZE 1
 
 typedef struct		s_list
 {

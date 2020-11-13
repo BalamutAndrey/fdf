@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eboris <eboris@student.42.fr>              +#+  +:+       +#+         #
+#    By: geliz <geliz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/13 17:11:13 by geliz             #+#    #+#              #
-#    Updated: 2020/11/09 16:15:03 by eboris           ###   ########.fr        #
+#    Updated: 2020/11/13 21:29:57 by geliz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,7 @@ SRC = $(SRC_DIR)/ft_printf_hub.c $(SRC_DIR)/check_content.c $(SRC_DIR)/readkeys.
 	  $(SRC_DIR)/ft_striter.c $(SRC_DIR)/ft_striteri.c $(SRC_DIR)/ft_strlcat.c $(SRC_DIR)/ft_strmap.c \
 	  $(SRC_DIR)/ft_strmapi.c $(SRC_DIR)/ft_strncat.c $(SRC_DIR)/ft_strncmp.c $(SRC_DIR)/ft_strnequ.c \
 	  $(SRC_DIR)/ft_strnstr.c $(SRC_DIR)/ft_strrchr.c $(SRC_DIR)/ft_strsplit.c $(SRC_DIR)/ft_strstr.c \
-	  $(SRC_DIR)/ft_strtrim.c $(SRC_DIR)/ft_tolower.c $(SRC_DIR)/ft_strjoin_arg.c $(SRC_DIR)/ft_atoi_base.c \
-	  $(SRC_DIR)/get_next_line.c
+	  $(SRC_DIR)/ft_strtrim.c $(SRC_DIR)/ft_tolower.c $(SRC_DIR)/ft_strjoin_arg.c $(SRC_DIR)/ft_atoi_base.c
 OBJ_DIR = ./obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -48,7 +47,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		@ar rc $(NAME) $(OBJ)
-		@echo "\033[0m\033[36m$(NAME)\033[1m\033[34m OK\033[0m"
+		@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(NAME)" "OK"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(@D)

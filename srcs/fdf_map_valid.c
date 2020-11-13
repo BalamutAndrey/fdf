@@ -23,11 +23,11 @@ int		fdf_check_is_number(t_fdf *fdf, char *str, char **spl)
 	int		c_len;
 
 	i = 0;
-	if (str[i] == '-' && ft_isalnum(str[i + 1]) == 1)
+	if (str[i] == '-' && ft_isdigit(str[i + 1]) == 1)
 		i++;
-	if (ft_isalnum(str[i]) != 1)
+	if (ft_isdigit(str[i]) != 1)
 		return (-1);
-	while (ft_isalnum(str[i]) == 1)
+	while (ft_isdigit(str[i]) == 1)
 		i++;
 	if (!str[i])
 		return (0);
