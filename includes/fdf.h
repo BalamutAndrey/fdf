@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/11 17:48:06 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/13 18:07:55 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-//# include <mlx.h>
+# include <mlx.h>
 # include <math.h>
 # include "libft.h"
 
@@ -24,19 +24,25 @@
 # define SIZE_Y 1000
 # define MAX_X 150
 # define MAX_Y 100
-# define ZOOM 20
+# define ZOOM 35
 
-# define WHITE 0xffffff
-# define RED 0xe80c0c
+typedef	struct	s_color
+{
+	char	red;
+	char	green;
+	char	blue;
+	char	alpha;
+}				t_color;
+
 
 typedef struct	s_bres
 {
-	float		x1;
-	float		y1;
-	float		x2;
-	float		y2;
-	float		z1;
-	float		z2;
+	double		x1;
+	double		y1;
+	double		x2;
+	double		y2;
+	double		z1;
+	double		z2;
 }				t_bres;
 
 typedef struct	s_fdf
@@ -44,9 +50,15 @@ typedef struct	s_fdf
 	void		*mlx;
 	void		*win;
 	void		*img;
+	void		*img_iso;
+	char		*data;
+	char		*data_iso;
+	int			bit;
+	int			size;
+	int			endian;
 	int			map_x;
 	int			map_y;
-	 int			**map;
+	int			**map;
 //	int			map[11][19];
 	t_bres		*bres;
 }				t_fdf;
@@ -104,6 +116,7 @@ int		fdf_keyboard(t_fdf *fdf);
 void	fdf_draw(t_fdf *fdf);
 void	fdf_draw_1(t_fdf *fdf);
 void	fdf_bresenham(t_fdf *fdf);
+void	fdf_bresenham_iso(t_fdf *fdf);
 void    temp_map(t_fdf *fdf);
 
 #endif
