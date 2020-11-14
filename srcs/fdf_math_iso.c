@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 15:24:22 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 15:33:48 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 15:53:28 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,10 @@ void	fdf_math_iso_write(t_fdf *fdf, t_color color)
 
 	delta_x = abs(fdf->bres->x2 - fdf->bres->x1);
 	delta_y = abs(fdf->bres->y2 - fdf->bres->y1);
-	sign_x = fdf->bres->x1 < fdf->bres->x2 ? 1 : -1;
-	sign_y = fdf->bres->y1 < fdf->bres->y2 ? 1 : -1;
+	fdf_math_iso_write_sign(fdf, &sign_x, &sign_y);
 	error[0] = delta_x - delta_y;
-	double i = fdf->zoom;
-	while ((int)fdf->bres->x1 != (int)fdf->bres->x2 || (int)fdf->bres->y1 != (int)fdf->bres->y2)
+	while ((int)fdf->bres->x1 != (int)fdf->bres->x2 ||
+		(int)fdf->bres->y1 != (int)fdf->bres->y2)
 	{
 		fdf_put_pixel_iso(fdf, fdf->bres->x1, fdf->bres->y1, color);
 		if ((error[1] = error[0] * 2) > -delta_y)
@@ -77,6 +76,26 @@ void	fdf_math_iso_write(t_fdf *fdf, t_color color)
 			error[0] += delta_x;
 			fdf->bres->y1 += sign_y;
 		}
+	}
+}
+
+void	fdf_math_iso_write_sign(t_fdf *fdf, double *sign_x, double *sign_y)
+{
+	if (fdf->bres->x1 < fdf->bres->x2)
+	{
+		*sign_x = 1;
+	}
+	else
+	{
+		*sign_x = -1;
+	}
+	if (fdf->bres->y1 < fdf->bres->y2)
+	{
+		*sign_y = 1;
+	}
+	else
+	{
+		*sign_y = -1;
 	}
 }
 

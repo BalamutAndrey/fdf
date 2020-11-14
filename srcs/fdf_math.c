@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 14:44:47 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 15:35:17 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 15:39:33 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	fdf_math(t_fdf *fdf)
 		{
 			if (x < fdf->map_x - 1)
 			{
-                fdf_math_x(fdf, x, y);
+				fdf_math_x(fdf, x, y);
 			}
 			if (y < fdf->map_y - 1)
 			{
@@ -37,21 +37,21 @@ void	fdf_math(t_fdf *fdf)
 	}
 }
 
-void    fdf_math_x(t_fdf *fdf, int x, int y)
+void	fdf_math_x(t_fdf *fdf, int x, int y)
 {
 	fdf->bres->x1 = x;
 	fdf->bres->y1 = y;
 	fdf->bres->x2 = x + 1;
 	fdf->bres->y2 = y;
 	fdf_math_parallel(fdf);
- 	fdf->bres->x1 = x;
+	fdf->bres->x1 = x;
 	fdf->bres->y1 = y;
 	fdf->bres->x2 = x + 1;
 	fdf->bres->y2 = y;
-    fdf_math_iso(fdf);
+	fdf_math_iso(fdf);
 }
 
-void    fdf_math_y(t_fdf *fdf, int x, int y)
+void	fdf_math_y(t_fdf *fdf, int x, int y)
 {
 	fdf->bres->x1 = x;
 	fdf->bres->y1 = y;

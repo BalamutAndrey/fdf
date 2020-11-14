@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 15:34:01 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 15:54:37 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,6 @@ int		fdf_keyboard(t_fdf *fdf);
 ** fdf_draw.c
 */
 void	fdf_draw(t_fdf *fdf);
-void	fdf_draw_1(t_fdf *fdf);
-void	fdf_bresenham(t_fdf *fdf);
-void	fdf_bresenham_iso(t_fdf *fdf);
-void    temp_map(t_fdf *fdf);
 /*
 ** fdf_math.c
 */
@@ -141,6 +137,7 @@ void	fdf_put_pixel_paralel(t_fdf *fdf, int x, int y, t_color color);
 void	fdf_math_iso(t_fdf *fdf);
 void	fdf_math_iso_rotate(t_fdf *fdf);
 void	fdf_math_iso_write(t_fdf *fdf, t_color color);
+void	fdf_math_iso_write_sign(t_fdf *fdf, double *sign_x, double *sign_y);
 void	fdf_put_pixel_iso(t_fdf *fdf, int x, int y, t_color color);
 /*
 ** fdf_math_iso_rotate.c
