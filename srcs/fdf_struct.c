@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:23:13 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/11 13:28:53 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 15:01:27 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ t_fdf	*fdf_create_fdf(void)
 	new->win = NULL;
 	new->img = NULL;
 	new->map = NULL;
+	new->bres = fdf_memalloc(new, sizeof(t_bres));
 	return (new);
 }

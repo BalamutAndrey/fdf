@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/13 21:30:42 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/14 15:34:01 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ typedef	struct	s_color
 
 typedef struct	s_bres
 {
-	int			x1;
-	int			y1;
-	int			x2;
-	int			y2;
-	int			z1;
-	int			z2;
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
+	int		z1;
+	int		z2;
 }				t_bres;
 
 typedef struct	s_fdf
@@ -123,6 +123,32 @@ void	fdf_draw_1(t_fdf *fdf);
 void	fdf_bresenham(t_fdf *fdf);
 void	fdf_bresenham_iso(t_fdf *fdf);
 void    temp_map(t_fdf *fdf);
+/*
+** fdf_math.c
+*/
+void	fdf_math(t_fdf *fdf);
+void    fdf_math_x(t_fdf *fdf, int x, int y);
+void    fdf_math_y(t_fdf *fdf, int x, int y);
+/*
+** fdf_math_parallel.c
+*/
+void	fdf_math_parallel(t_fdf *fdf);
+void	fdf_math_parallel_write(t_fdf *fdf, t_color color);
+void	fdf_put_pixel_paralel(t_fdf *fdf, int x, int y, t_color color);
+/*
+** fdf_math_iso.c
+*/
+void	fdf_math_iso(t_fdf *fdf);
+void	fdf_math_iso_rotate(t_fdf *fdf);
+void	fdf_math_iso_write(t_fdf *fdf, t_color color);
+void	fdf_put_pixel_iso(t_fdf *fdf, int x, int y, t_color color);
+/*
+** fdf_math_iso_rotate.c
+*/
+void	fdf_rotate_x(int *y, int *z, double alpha);
+void	fdf_rotate_y(int *x, int *z, double beta);
+void	fdf_rotate_z(int *x, int *y, double gamma);
+
 
 int		get_next_line(const int fd, char **line);
 

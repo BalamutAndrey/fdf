@@ -18,8 +18,11 @@ SRC_NAME=fdf.c \
 		gnl_clear.c \
 		fdf_init.c \
 		fdf_keyboard.c \
-		fdf_draw.c
-
+		fdf_draw.c \
+		fdf_math.c \
+		fdf_math_parallel.c \
+		fdf_math_iso.c \
+		fdf_math_iso_rotate.c
 
 SRC = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
 
