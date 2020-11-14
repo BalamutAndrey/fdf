@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:19:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 17:27:34 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 18:09:47 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		fdf_close(void *param)
 
 void	fdf_exit(t_fdf *fdf)
 {
-//	if (fdf)
-//		fdf_remove_fdf(&fdf);
+	(void)fdf;
 	exit(0);
 }
