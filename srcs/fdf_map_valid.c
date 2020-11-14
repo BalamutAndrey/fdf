@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_map_valid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 15:44:49 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/14 15:44:51 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/14 16:49:00 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ void	fdf_remove_split(char ***split)
 	*split = NULL;
 }
 
-int		fdf_check_is_number(t_fdf *fdf, char *str, char **spl)
+int		fdf_check_is_number(char *str)
 {
 	int		i;
-	int		c_len;
 
 	i = 0;
 	if (str[i] == '-' && ft_isdigit(str[i + 1]) == 1)
@@ -90,7 +89,7 @@ int		fdf_string_to_arr(t_fdf *fdf, t_str *first, char *str)
 	split = ft_strsplit(str, ' ');
 	while (split[i] && err == 0)
 	{
-		err = fdf_check_is_number(fdf, split[i], split);
+		err = fdf_check_is_number(split[i]);
 		i++;
 	}
 	if (i < 2)

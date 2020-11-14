@@ -1,8 +1,7 @@
 NAME=fdf
 
 CC=gcc
-FLAGS=-g -lmlx -framework OpenGL -framework AppKit -lm 
-#-Wall -Wextra -Werror
+FLAGS=-lmlx -lm -framework OpenGL -framework AppKit
 
 SRC_DIR=./srcs
 OBJ_DIR=./obj
@@ -34,7 +33,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -s -C $(LIB_DIR)
 	@$(CC) -o $(NAME) $(SRC) \
-		$(LIB_DIR)/libft.a -lncurses -ltermcap $(INC) $(FLAGS)
+		$(LIB_DIR)/libft.a $(INC) $(FLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p obj

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 16:32:09 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/14 16:49:22 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct		s_fdf
 	bool			image;
 	char			*data;
 	char			*data_iso;
-	char			*data_cls;
 	int				bit;
 	int				size;
 	int				endian;
@@ -108,7 +107,7 @@ int					fdf_string_to_arr(t_fdf *fdf, t_str *first, char *str);
 void				fdf_fill_str_struct(t_fdf *fdf, t_str *first, char **split,
 						int i);
 void				fdf_fill_arr(t_fdf *fdf, t_str *f, char **split, int len);
-int					fdf_check_is_number(t_fdf *fdf, char *str, char **spl);
+int					fdf_check_is_number(char *str);
 void				fdf_remove_split(char ***split);
 /*
 ** fdf_init.c
@@ -122,6 +121,8 @@ int					fdf_keyboard(int key, void *param);
 ** fdf_draw.c
 */
 void				fdf_draw(t_fdf *fdf);
+void				fdf_change_image(t_fdf *fdf);
+
 /*
 ** fdf_math.c
 */
@@ -154,11 +155,6 @@ void				fdf_rotate_z(int *x, int *y, double gamma);
 ** gnl.c
 */
 int					get_next_line(const int fd, char **line);
-static t_list		*ft_findlist(t_list *first, int fd);
-static int			ft_readplus(t_list *temp, char **line, char *buf);
-static int			ft_fillstring(t_list *temp, char **line, char *part,
-						int res);
-static char			*ft_giveline(t_list *temp, char *part);
 /*
 ** gnl_clear.c
 */
