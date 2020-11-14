@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 15:04:03 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 16:49:42 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 17:36:39 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	fdf_math_parallel(t_fdf *fdf)
 	fdf->bres->z2 = fdf->map[(int)fdf->bres->y2][(int)fdf->bres->x2];
 	fdf->bres->z1 = fdf->bres->z1 * fdf->zoom;
 	fdf->bres->z2 = fdf->bres->z2 * fdf->zoom;
-	if (fdf->bres->z1 > 0)
+	if (fdf->bres->z1 != 0)
 		color = (t_color){0, 0, 255, 0};
 	else
 		color = (t_color){255, 255, 255, 0};

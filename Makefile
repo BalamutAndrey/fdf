@@ -37,7 +37,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p obj
-	@$(CC) -o $@ -c $< $(INC) $(FLAGS)
+	@2>&- $(CC) -o $@ -c $< $(INC) $(FLAGS)
 	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
 
 clean:
