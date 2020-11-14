@@ -6,7 +6,7 @@
 /*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:11:18 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/13 21:37:05 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/14 15:52:47 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	fdf_fillmap(t_fdf *fdf, t_str *first)
 void	fdf_read_clean(char *str, t_str *fir, int fir_fl)
 {
 	t_str	*tmp;
-	
+
 	if (str)
 		ft_strdel(&str);
 	if (fir)
@@ -47,7 +47,7 @@ void	fdf_read_clean(char *str, t_str *fir, int fir_fl)
 				free(tmp->arr);
 				tmp->arr = NULL;
 			}
-			free (tmp);
+			free(tmp);
 			tmp = fir;
 		}
 	}
@@ -78,7 +78,8 @@ void	fdf_readmap(t_fdf *fdf, char *arg)
 	t_str	*first;
 	int		err;
 
-	fd = open(arg, O_RDONLY);//errno?
+	str = NULL;
+	fd = open(arg, O_RDONLY);
 	if (fd == -1)
 		fdf_error(fdf, "fdf: Error opening file\n");
 	first = fdf_memalloc(fdf, sizeof(t_str));
@@ -90,13 +91,7 @@ void	fdf_readmap(t_fdf *fdf, char *arg)
 		fdf->map_y++;
 		ft_strdel(&str);
 	}
-	if (err == -1)
-	{
-		fdf_read_clean(NULL, first, 1);
-		fdf_error(fdf, "fdf: Not a file\n");
-	}
-	ft_strdel(&str);// may be not
-	if (fdf->map_y < 2)
+	if (err == -1 || fdf->map_y < 2)
 	{
 		fdf_read_clean(str, first, 1);
 		fdf_error(fdf, "fdf: Map invalid\n");
