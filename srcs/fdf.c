@@ -6,31 +6,11 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:19:59 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 15:00:51 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 16:10:08 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	tmp_print_map(t_fdf *fdf)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (i < fdf->map_y)
-	{
-		while (j < fdf->map_x)
-		{
-			ft_printf("%2i ", fdf->map[i][j]);
-			j++;
-		}
-		ft_printf("\n");
-		j = 0;
-		i++;
-	}
-}
 
 int		main(int argc, char **argv)
 {
@@ -41,11 +21,21 @@ int		main(int argc, char **argv)
 	fdf = fdf_create_fdf();
 	fdf_readmap(fdf, argv[1]);
 	fdf->zoom = fminf((SIZE_X) / fdf->map_x / 2, SIZE_Y / fdf->map_y / 2);
-//	tmp_print_map(fdf);
 	fdf_init(fdf);
 	fdf_math(fdf);
 	fdf_draw(fdf);
+	mlx_hook(fdf->win, 2, (1L << 1), fdf_keyboard, fdf);
+	mlx_hook(fdf->win, 17, 1, fdf_close, fdf);
 	mlx_loop(fdf->mlx);
+	fdf_exit(fdf);
+	return (0);
+}
+
+int		fdf_close(void *param)
+{
+	t_fdf	*fdf;
+
+	fdf = (t_fdf *)param;
 	fdf_exit(fdf);
 	return (0);
 }

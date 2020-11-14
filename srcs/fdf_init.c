@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:51:40 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 15:43:59 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/14 15:58:39 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,4 @@ void	fdf_init(t_fdf *fdf)
 		&fdf->endian);
 	if (fdf->data_iso == NULL)
 		fdf_error(fdf, "fdf: data initialization error\n");
-	// mlx_key_hook(fdf->win, fdf_keyboard(fdf), NULL);
 }

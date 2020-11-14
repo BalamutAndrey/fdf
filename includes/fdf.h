@@ -6,7 +6,7 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:46:00 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/14 15:54:37 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 16:24:25 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <math.h>
+# include <stdbool.h>
 # include "libft.h"
 
 # define SIZE_X 1500
@@ -55,8 +56,10 @@ typedef struct	s_fdf
 	void		*win;
 	void		*img;
 	void		*img_iso;
+	bool		image;
 	char		*data;
 	char		*data_iso;
+	char		*data_cls;
 	int			bit;
 	int			size;
 	int			endian;
@@ -78,6 +81,7 @@ typedef struct		s_str
 ** fdf.c
 */
 int				main(int argc, char **argv);
+int		fdf_close(void *param);
 void			fdf_exit(t_fdf *fdf);
 /*
 ** fdf_struct.c
@@ -114,7 +118,7 @@ void    fdf_init(t_fdf *fdf);
 /*
 ** fdf_keyboard.c
 */
-int		fdf_keyboard(t_fdf *fdf);
+int		fdf_keyboard(int key, void *param);
 /*
 ** fdf_draw.c
 */

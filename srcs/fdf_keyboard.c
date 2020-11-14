@@ -6,13 +6,18 @@
 /*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:47:06 by eboris            #+#    #+#             */
-/*   Updated: 2020/11/11 15:50:47 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 16:05:03 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	fdf_keyboard(t_fdf *fdf)
+int	fdf_keyboard(int key, void *param)
 {
+	t_fdf	*fdf;
+	
+	fdf = (t_fdf *)param;
+	if (key == 53)
+		fdf_exit(fdf);
 	return (0);
 }
