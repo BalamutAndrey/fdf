@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_readmap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:11:18 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/14 15:52:47 by geliz            ###   ########.fr       */
+/*   Updated: 2020/11/14 18:26:38 by eboris           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	fdf_readmap(t_fdf *fdf, char *arg)
 		fdf->map_y++;
 		ft_strdel(&str);
 	}
+	close(fd);
 	if (err == -1 || fdf->map_y < 2)
 	{
 		fdf_read_clean(str, first, 1);
