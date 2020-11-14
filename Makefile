@@ -6,7 +6,8 @@ FLAGS=-lmlx -lm -framework OpenGL -framework AppKit -Wall -Wextra
 SRC_DIR=./srcs
 OBJ_DIR=./obj
 LIB_DIR=./libft
-
+HEADER_DIR = ./includes
+HEADER_NAME = fdf.h
 SRC_NAME=fdf.c \
 		fdf_error.c \
 		fdf_func.c \
@@ -24,7 +25,7 @@ SRC_NAME=fdf.c \
 		fdf_math_iso_rotate.c
 
 SRC = $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
-
+HEADER = $(addprefix $(HEADER_DIR)/, $(HEADER_NAME))
 OBJ = $(SRC)
 INC = -I ./includes -I $(LIB_DIR)/includes
 
@@ -35,7 +36,7 @@ $(NAME): $(OBJ)
 	@$(CC) -o $(NAME) $(SRC) \
 		$(LIB_DIR)/libft.a $(INC) $(FLAGS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 	@mkdir -p obj
 	@$(CC) -o $@ -c $< $(INC) $(FLAGS) 2>&-
 	@printf "\033[0m\033[36%-45s\033[1m\033[34m%s\033[0m\n" "m$(notdir $<)" "OK"
