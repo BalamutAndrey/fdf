@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_struct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eboris <eboris@student.42.fr>              +#+  +:+       +#+        */
+/*   By: geliz <geliz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:23:13 by geliz             #+#    #+#             */
-/*   Updated: 2020/11/14 16:24:43 by eboris           ###   ########.fr       */
+/*   Updated: 2020/11/14 16:40:02 by geliz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	fdf_remove_fdf(t_fdf **fdf)
 	tmp->mlx = NULL;
 	tmp->win = NULL;
 	tmp->img = NULL;
+	tmp->img_iso = NULL;
+	free(tmp->bres);
+	tmp->bres = NULL;
 	free(tmp);
 	*fdf = NULL;
 }
